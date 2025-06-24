@@ -50,6 +50,35 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-rest-framework"
+version = "0.1.0"
+description = "alias."
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "django-rest-framework-0.1.0.tar.gz", hash = "sha256:47a8f496fa69e3b6bd79f68dd7a1527d907d6b77f009e9db7cf9bb21cc565e4a"},
+]
+
+[package.dependencies]
+djangorestframework = "*"
+
+[[package]]
+name = "djangorestframework"
+version = "3.16.0"
+description = "Web APIs for Django, made easy."
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+files = [
+    {file = "djangorestframework-3.16.0-py3-none-any.whl", hash = "sha256:bea7e9f6b96a8584c5224bfb2e4348dfb3f8b5e34edbecb98da258e892089361"},
+    {file = "djangorestframework-3.16.0.tar.gz", hash = "sha256:f022ff46613584de994c0c6a4aebbace5fd700555fbe9d33b865ebf173eba6c9"},
+]
+
+[package.dependencies]
+django = ">=4.2"
+
+[[package]]
 name = "factory-boy"
 version = "3.3.3"
 description = "A versatile test fixtures replacement based on thoughtbot's factory_bot for Ruby."
@@ -191,4 +220,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12"
-content-hash = "85d90cb25eac794ff28d482dc623339c5ecffe2371fec061b83a936af8fd5c33"
+content-hash = "ea360000406d6773332073ae59a4f0c5c72bfe154e5ce7203f9bffc835bc8ad2"
