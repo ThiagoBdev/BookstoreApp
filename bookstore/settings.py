@@ -11,14 +11,11 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config("DJANGO_SECRET_KEY", default=None)
+SECRET_KEY = config(
+    "DJANGO_SECRET_KEY",
+    default="fallback-dev-secret-key"
+)
 
-# Se estiver rodando testes, use uma chave fixa para evitar erro
-if not SECRET_KEY:
-    if "test" in sys.argv:
-        SECRET_KEY = "test-secret-key-please-change-me"
-    else:
-        raise Exception("SECRET_KEY environment variable is not set")
 
 # DEBUG: padrão True para dev, False para produção
 DEBUG = config("DEBUG", default="1" if "runserver" in sys.argv or "test" in sys.argv else "0", cast=int)
