@@ -20,3 +20,8 @@ def update(request):
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
     return JsonResponse({"error": "Only POST allowed"}, status=405)
+
+
+def hello_world(request):
+    return HttpResponse("Hello, World!")
+
