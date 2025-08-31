@@ -7,21 +7,16 @@ import git
 
 @csrf_exempt
 def update(request):
+    import json
+    from django.http import JsonResponse
+
     if request.method == "POST":
-        '''
-        pass the path of the diectory where your project will be
-        stored on PythonAnywhere in the git.Repo() as parameter.
-        Here the name of my directory is "test.pythonanywhere.com"
-        '''
-        repo = git.Repo('/home/drsantos20/bookstore')
+        event = request.headers.get("X-GitHub-Event")
+        if event == "ping":
+            return JsonResponse({"msg": "pong"})
+        # Atualização real do repo
+        repo = git.Repo('/home/ThiagoBdev/BookstoreApp')
         origin = repo.remotes.origin
-
         origin.pull()
-        return HttpResponse("Updated code on PythonAnywhere")
-    else:
-        return HttpResponse("Couldn't update the code on PythonAnywhere")
-
-
-def hello_world(request):
-  template = loader.get_template('hello_world.html')
-  return HttpResponse(template.render())
+        return JsonResponse({"msg": "Updated code on PythonAnywhere"})
+    return HttpResponse("Only POST allowed", status=405)
