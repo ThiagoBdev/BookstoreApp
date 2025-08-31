@@ -21,7 +21,7 @@ SECRET_KEY = config(
 DEBUG = config("DEBUG", default="1" if "runserver" in sys.argv or "test" in sys.argv else "0", cast=int)
 
 # ALLOWED_HOSTS: separa variável de ambiente por espaços, padrão localhost e 127.0.0.1
-allowed_hosts_env = config("DJANGO_ALLOWED_HOSTS", default="localhost 127.0.0.1")
+allowed_hosts_env = config("DJANGO_ALLOWED_HOSTS", default="localhost 127.0.0.1 ThiagoBdev.pythonanywhere.com")
 ALLOWED_HOSTS = allowed_hosts_env.split()
 
 # Application definition
@@ -54,13 +54,16 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "bookstore.urls"
 
+APPEND_SLASH = True
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        'DIRS': [os.path.join(BASE_DIR, 'bookstore', 'templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
+                "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
